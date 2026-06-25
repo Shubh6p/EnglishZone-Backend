@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const gradeController_1 = require("../controllers/gradeController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const router = (0, express_1.Router)();
+router.use(authMiddleware_1.requireAuth);
+router.get('/', gradeController_1.getGrades);
+router.post('/bulk', gradeController_1.bulkUpsertGrades);
+exports.default = router;
